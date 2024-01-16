@@ -29,16 +29,18 @@ class KayneWestQuotes implements QuotesInterface
 
     public function quotes(int $num = 5): array
     {       
+        if(!$num || $num < 1) {
+            return [];
+        }
+
         $quotes = [];
+        
+        do {
+            $quote = $this->getQuote();
+            $key = md5($quote);
+            $quotes[$key] = $quote;
+        } while (count($quotes) < $num);
 
-        if(!$num) {
-            return $quotes;
-        }
-
-        for($i = 0; $i < $num; $i++) {
-            $quotes[] =$this->getQuote();
-        }
-
-        return $quotes;
+        return array_values($quotes);
     }
 }
