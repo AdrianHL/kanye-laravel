@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use App\Http\Middleware\ApiToken;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware([ApiToken::class])->prefix('api')->controller(ApiController::class)->group(function () {
+    Route::get('/', 'view');
+    Route::get('/refresh', 'refresh');
 });
