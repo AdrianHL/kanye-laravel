@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  kayne-app:
+    container_name: kayne-php
+    restart: unless-stopped
+    build:
+      args:
+        user: kayne
+        uid: 1000
+      context: ./
+      dockerfile: ./docker/php/Dockerfile
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    networks:
+      - kayne-laravel
+  kayne-nginx:
+    image: 'nginx:latest'
+    container_name: kayne-nginx
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/templates/:/etc/nginx/templates/
+    environment:
+      BACKEND: kayne-php
+    ports:
+      - '8123:80'
+    depends_on:
+      - kayne-app
+    networks:
+      - kayne-laravel
+networks:
+  kayne-laravel:
+    driver: bridge
