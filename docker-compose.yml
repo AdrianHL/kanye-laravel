@@ -1,11 +1,11 @@
 version: '3.7'
 services:
-  kayne-app:
-    container_name: kayne-php
+  kanye-app:
+    container_name: kanye-php
     restart: unless-stopped
     build:
       args:
-        user: kayne
+        user: kanye
         uid: 1000
       context: ./
       dockerfile: ./docker/php/Dockerfile
@@ -15,22 +15,22 @@ services:
       - ./:/var/www
     working_dir: /var/www
     networks:
-      - kayne-laravel
-  kayne-nginx:
+      - kanye-laravel
+  kanye-nginx:
     image: 'nginx:latest'
-    container_name: kayne-nginx
+    container_name: kanye-nginx
     restart: unless-stopped
     volumes:
       - ./:/var/www
       - ./docker/nginx/templates/:/etc/nginx/templates/
     environment:
-      BACKEND: kayne-php
+      BACKEND: kanye-php
     ports:
       - '8123:80'
     depends_on:
-      - kayne-app
+      - kanye-app
     networks:
-      - kayne-laravel
+      - kanye-laravel
 networks:
-  kayne-laravel:
+  kanye-laravel:
     driver: bridge

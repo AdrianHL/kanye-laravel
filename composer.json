@@ -1,6 +1,6 @@
 {
-    "name": "adrianhl/kayne-laravel",
-    "description": "A Laravel API around Kayne West Quotes API",
+    "name": "adrianhl/kanye-laravel",
+    "description": "A Laravel API around Kanye West Quotes API",
     "type": "project",
     "license": "MIT",
     "authors": [

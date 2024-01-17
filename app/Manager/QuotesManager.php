@@ -8,11 +8,11 @@ class QuotesManager extends Manager
 {
     public function getDefaultDriver(): string
     {
-        return $this->config->get('quotes-manager.driver', 'kayne');
+        return $this->config->get('quotes-manager.driver', 'kanye');
     }
 
-    public function createKayneDriver(): QuotesInterface
+    public function createKanyeDriver(): QuotesInterface
     {
-        return new KayneWestQuotes();
+        return new KanyeWestQuotes();
     }
 }

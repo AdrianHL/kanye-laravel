@@ -13,7 +13,7 @@ class ApiController extends Controller
     private const QUOTES_AMOUNT = 5;
 
     /**
-     * Shows 5 quotes from Kayne West Quotes API (from cached data)
+     * Shows 5 quotes from Kanye West Quotes API (from cached data)
      */
     public function view(): JsonResponse
     {
@@ -23,7 +23,7 @@ class ApiController extends Controller
     }
 
     /**
-     * Invalidates the cached data and shows 5 new quotes from Kayne West Quotes API
+     * Invalidates the cached data and shows 5 new quotes from Kanye West Quotes API
      */
     public function refresh(): JsonResponse
     {
@@ -40,7 +40,7 @@ class ApiController extends Controller
     private function getQuotes(): array
     {
         return Cache::rememberForever(self::QUOTES_CACHE_KEY, function () {
-            return Quotes::driver('kayne')->quotes(self::QUOTES_AMOUNT);
+            return Quotes::driver('kanye')->quotes(self::QUOTES_AMOUNT);
         });
     }
 }

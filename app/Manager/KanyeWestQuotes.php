@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-class KayneWestQuotes implements QuotesInterface
+class KanyeWestQuotes implements QuotesInterface
 {
     private const API_URL = 'https://api.kanye.rest/';
 
@@ -21,9 +21,9 @@ class KayneWestQuotes implements QuotesInterface
                 return $responseContent['quote'];
             }
 
-            throw new \Exception('Kayne API Is Not Responsive');
+            throw new \Exception('Kanye API Is Not Responsive');
         } catch (\Exception $e) {
-            throw new \Exception('Kayne API Is Not Responsive');
+            throw new \Exception('Kanye API Is Not Responsive');
         }
     }
 
