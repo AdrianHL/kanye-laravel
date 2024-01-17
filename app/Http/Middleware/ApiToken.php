@@ -18,7 +18,7 @@ class ApiToken
         if ($request->input('token') !== config('api.auth.token')) {
             return abort(403);
         }
-        
+
         return $next($request);
     }
 }

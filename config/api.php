@@ -2,6 +2,6 @@
 
 return [
     'auth' => [
-        'token' => env('API_AUTH_TOKEN', 'adrianhl')
+        'token' => env('API_AUTH_TOKEN', 'adrianhl'),
     ],
 ];
