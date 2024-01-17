@@ -15,5 +15,4 @@ class QuotesManager extends Manager
     {
         return new KayneWestQuotes();
     }
-
 }

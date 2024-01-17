@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Manager\Quotes;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class ApiController extends Controller
 {
     private const QUOTES_CACHE_KEY = 'api.quotes.cache';
+
     private const QUOTES_AMOUNT = 5;
 
     /**
@@ -18,7 +18,7 @@ class ApiController extends Controller
     public function view(): JsonResponse
     {
         return response()->json([
-            'quotes' => $this->getQuotes()
+            'quotes' => $this->getQuotes(),
         ]);
     }
 
@@ -30,7 +30,7 @@ class ApiController extends Controller
         Cache::forget(self::QUOTES_CACHE_KEY);
 
         return response()->json([
-            'quotes' => $this->getQuotes()
+            'quotes' => $this->getQuotes(),
         ]);
     }
 
@@ -39,7 +39,7 @@ class ApiController extends Controller
      */
     private function getQuotes(): array
     {
-        return Cache::rememberForever(self::QUOTES_CACHE_KEY, function() {
+        return Cache::rememberForever(self::QUOTES_CACHE_KEY, function () {
             return Quotes::driver('kayne')->quotes(self::QUOTES_AMOUNT);
         });
     }

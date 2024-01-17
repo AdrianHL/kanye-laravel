@@ -13,8 +13,8 @@ class ApiTest extends TestCase
     public function test_the_api_is_not_accessible_without_token(): void
     {
         $paths = ['/api', '/api/refresh'];
-        
-        foreach($paths as $path) {
+
+        foreach ($paths as $path) {
             $response = $this->get($path);
             $response->assertStatus(403);
         }
@@ -26,9 +26,9 @@ class ApiTest extends TestCase
     public function test_the_api_is_not_accessible_with_an_invalid_token(): void
     {
         $paths = ['/api', '/api/refresh'];
-        
-        foreach($paths as $path) {
-            $response = $this->get($path . '?token=different_token');
+
+        foreach ($paths as $path) {
+            $response = $this->get($path.'?token=different_token');
             $response->assertStatus(403);
         }
     }
@@ -41,14 +41,13 @@ class ApiTest extends TestCase
         $response = $this->getJson('/api?token=test_token');
         $response->assertStatus(200);
 
-        $response->assertJson(fn (AssertableJson $json) =>
-            $json->whereType('quotes', 'array')
-                 ->has('quotes', 5)
-                 ->whereType('quotes.0', 'string')
-                 ->whereType('quotes.1', 'string')
-                 ->whereType('quotes.2', 'string')
-                 ->whereType('quotes.3', 'string')
-                 ->whereType('quotes.4', 'string')
+        $response->assertJson(fn (AssertableJson $json) => $json->whereType('quotes', 'array')
+            ->has('quotes', 5)
+            ->whereType('quotes.0', 'string')
+            ->whereType('quotes.1', 'string')
+            ->whereType('quotes.2', 'string')
+            ->whereType('quotes.3', 'string')
+            ->whereType('quotes.4', 'string')
         );
     }
 
@@ -60,14 +59,13 @@ class ApiTest extends TestCase
         $response = $this->getJson('/api/refresh?token=test_token');
         $response->assertStatus(200);
 
-        $response->assertJson(fn (AssertableJson $json) =>
-            $json->whereType('quotes', 'array')
-                 ->has('quotes', 5)
-                 ->whereType('quotes.0', 'string')
-                 ->whereType('quotes.1', 'string')
-                 ->whereType('quotes.2', 'string')
-                 ->whereType('quotes.3', 'string')
-                 ->whereType('quotes.4', 'string')
+        $response->assertJson(fn (AssertableJson $json) => $json->whereType('quotes', 'array')
+            ->has('quotes', 5)
+            ->whereType('quotes.0', 'string')
+            ->whereType('quotes.1', 'string')
+            ->whereType('quotes.2', 'string')
+            ->whereType('quotes.3', 'string')
+            ->whereType('quotes.4', 'string')
         );
     }
 

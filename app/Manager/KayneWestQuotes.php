@@ -13,7 +13,7 @@ class KayneWestQuotes implements QuotesInterface
             curl_setopt($ch, CURLOPT_URL, self::API_URL);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($ch);
-            curl_close ($ch);
+            curl_close($ch);
 
             $responseContent = json_decode($response, true);
 
@@ -28,13 +28,13 @@ class KayneWestQuotes implements QuotesInterface
     }
 
     public function quotes(int $num = 5): array
-    {       
-        if(!$num || $num < 1) {
+    {
+        if (! $num || $num < 1) {
             return [];
         }
 
         $quotes = [];
-        
+
         do {
             $quote = $this->getQuote();
             $key = md5($quote);
