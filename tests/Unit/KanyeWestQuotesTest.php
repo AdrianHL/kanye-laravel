@@ -2,19 +2,19 @@
 
 namespace Tests\Unit;
 
-use App\Manager\KayneWestQuotes;
+use App\Manager\KanyeWestQuotes;
 use PHPUnit\Framework\TestCase;
 
-class KayneWestQuotesTest extends TestCase
+class KanyeWestQuotesTest extends TestCase
 {
     /**
-     * Test that the quotes manager return quotes from Kayne West API
+     * Test that the quotes manager return quotes from Kanye West API
      *
      * @dataProvider numberOfQuotes
      */
-    public function test_quotes_manager_retrieve_quotes_from_kayne_west_api($numberOfQuotes, $returnedQuotes): void
+    public function test_quotes_manager_retrieve_quotes_from_kanye_west_api($numberOfQuotes, $returnedQuotes): void
     {
-        $quotesAPI = new KayneWestQuotes();
+        $quotesAPI = new KanyeWestQuotes();
 
         $quotes = $quotesAPI->quotes($numberOfQuotes);
 
