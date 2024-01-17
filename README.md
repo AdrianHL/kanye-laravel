@@ -30,5 +30,3 @@ If you want to run specific test suites please do it with:
 ## Next Steps
 
 * Get feedback.
-* Add code linting and format code according to code convention.
-* Add CI to ensure code lint.
